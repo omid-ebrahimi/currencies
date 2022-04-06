@@ -1,3 +1,7 @@
+export function formatWithCommas(value: string): string {
+  return value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 export function numberWithCommas(value: number): string {
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return formatWithCommas(value.toString());
 }

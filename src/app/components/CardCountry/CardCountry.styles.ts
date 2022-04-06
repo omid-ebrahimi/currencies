@@ -25,4 +25,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     color: colors.grayText,
   },
+  textSuccess: {
+    color: colors.success,
+  },
 });
