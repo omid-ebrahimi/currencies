@@ -2,8 +2,12 @@ import { StyleSheet } from 'react-native';
 import { colors, getShadowStyle, typography } from '@src/theme';
 
 export const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: colors.grayBackground,
+  },
   inputsContainer: {
-    ...getShadowStyle(1),
+    ...getShadowStyle(2),
     paddingVertical: 5,
     backgroundColor: colors.grayBackground,
   },
@@ -19,6 +23,5 @@ export const styles = StyleSheet.create({
   listContainer: {
     paddingVertical: 3,
     paddingHorizontal: 5,
-    backgroundColor: colors.grayBackground,
   },
 });

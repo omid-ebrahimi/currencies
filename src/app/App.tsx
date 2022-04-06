@@ -35,7 +35,7 @@ function App() {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.screen}>
       <KeyboardAvoidingView style={styles.inputsContainer}>
         <TextInput
           style={styles.input}
