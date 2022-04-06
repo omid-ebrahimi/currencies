@@ -41,4 +41,7 @@ function CardCountry({ country, amount }: Props) {
   );
 }
 
-export default CardCountry;
+export default React.memo(
+  CardCountry,
+  (prevProps, nextProps) => prevProps.amount === nextProps.amount,
+);
