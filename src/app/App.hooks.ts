@@ -1,6 +1,11 @@
-import { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import { useCallback, useEffect, useState } from 'react';
 import { Country, Rates } from './App.types';
 import { fetchCountries, fetchRates } from './services';
+
+function alertError(message: string) {
+  Alert.alert('Network Error', message);
+}
 
 export function useCountries(): { countries: Country[]; loading: boolean } {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -9,17 +14,32 @@ export function useCountries(): { countries: Country[]; loading: boolean } {
   useEffect(() => {
     fetchCountries()
       .then(setCountries)
-      .then(() => setLoading(false));
+      .catch(() => alertError('Failed to load countries!'))
+      .finally(() => setLoading(false));
   }, []);
 
   return { countries, loading };
 }
 
-export function useRates(): Rates | undefined {
+interface UseRatesType {
+  rates?: Rates;
+  loading: boolean;
+  refresh: () => void;
+}
+
+export function useRates(): UseRatesType {
   const [rates, setRates] = useState<Rates>();
-  useEffect(() => {
-    fetchRates().then(setRates);
+  const [loading, setLoading] = useState(true);
+
+  const refresh = useCallback(() => {
+    setLoading(true);
+    fetchRates()
+      .then(setRates)
+      .catch(() => alertError('Failed to load exchange rates!'))
+      .finally(() => setLoading(false));
   }, []);
 
-  return rates;
+  useEffect(refresh, [refresh]);
+
+  return { rates, refresh, loading };
 }

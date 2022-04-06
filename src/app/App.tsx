@@ -10,8 +10,8 @@ function App() {
   const [filter, setFilter] = useState('');
   const [amount, setAmount] = useState('');
 
-  const rates = useRates();
   const { countries, loading } = useCountries();
+  const { rates, refresh: refreshRates, loading: loadingRates } = useRates();
 
   function calculateAmount(currency?: Currency): number | undefined {
     if (rates && currency?.code && rates[currency.code]) {
@@ -22,7 +22,6 @@ function App() {
   if (loading) {
     return <LoadingScreen />;
   }
-
   return (
     <SafeAreaView style={styles.screen}>
       <KeyboardAvoidingView style={styles.inputsContainer}>
@@ -31,7 +30,11 @@ function App() {
           value={filter}
           onChangeText={setFilter}
         />
-        <InputCurrency value={amount} onChangeValue={setAmount} />
+        <InputCurrency
+          value={amount}
+          onChangeText={setAmount}
+          editable={rates !== undefined}
+        />
       </KeyboardAvoidingView>
       <FlatList
         data={countries.filter(country => country.name.includes(filter))}
@@ -39,6 +42,8 @@ function App() {
           <CardCountry country={item} amount={calculateAmount(item.currency)} />
         )}
         keyExtractor={({ name }) => name}
+        onRefresh={refreshRates}
+        refreshing={loadingRates}
         contentContainerStyle={styles.listContainer}
       />
     </SafeAreaView>
