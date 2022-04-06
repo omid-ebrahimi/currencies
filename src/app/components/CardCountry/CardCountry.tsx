@@ -7,10 +7,13 @@ import { styles } from './CardCountry.styles';
 
 interface Props {
   country: Country;
+  amount?: number;
 }
 
-function CardCountry({ country }: Props) {
+function CardCountry({ country, amount }: Props) {
   const { name, flag, capital, population, currency } = country;
+  console.log(name);
+  console.log(amount);
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -26,9 +29,14 @@ function CardCountry({ country }: Props) {
         </Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.subtitle} numberOfLines={1}>
-          &#128176; {currency.name} ({currency.symbol})
+        <Text style={styles.subtitle}>
+          &#128176; {currency?.code ?? 'Unknown'}
         </Text>
+        {amount !== undefined && (
+          <Text style={styles.subtitle}>
+            {currency?.symbol ?? '?'} {amount.toFixed(2)}
+          </Text>
+        )}
       </View>
     </View>
   );
