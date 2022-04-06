@@ -12,8 +12,7 @@ interface Props {
 
 function CardCountry({ country, amount }: Props) {
   const { name, flag, capital, population, currency } = country;
-  console.log(name);
-  console.log(amount);
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>

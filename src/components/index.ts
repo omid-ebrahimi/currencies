@@ -1,1 +1,2 @@
-export { default as LoadingScreen } from './LoadingScreen/LoadingScreen';
+export * from './Input';
+export * from './LoadingScreen';

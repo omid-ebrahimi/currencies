@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, getShadowStyle, typography } from '@src/theme';
+import { colors, getShadowStyle } from '@src/theme';
 
 export const styles = StyleSheet.create({
   screen: {
@@ -11,14 +11,9 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     backgroundColor: colors.grayBackground,
   },
-  input: {
-    ...typography.h3,
-    margin: 5,
-    padding: 7,
-    borderWidth: 1,
-    borderColor: colors.grayBorder,
-    backgroundColor: colors.white,
-    borderRadius: 5,
+  currencyInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   listContainer: {
     paddingVertical: 3,
