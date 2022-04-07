@@ -4,7 +4,7 @@ import { RatesDto } from './services.types';
 
 export async function fetchRates(): Promise<Rates> {
   const response = await fetch(
-    `http://data.fixer.io/api/latest?access_key=${Config.FIXER_KEY}`,
+    `http://data.fixer.io/api/latest?access_key=${Config.FIXER_ACCESS_KEY}`,
   );
   const data: RatesDto = await response.json();
 
