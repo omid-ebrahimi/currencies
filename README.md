@@ -5,3 +5,17 @@ Then it can get an amount in SEK and calculates the equivalent currency for each
 ## Powered by
 1. Typescript
 2. React Native (Android & iOS)
+
+## Get Started
+#### Install packages
+```bash
+yarn install
+```
+#### Run the app
+```bash
+yarn run ios
+```
+or
+```bash
+yarn run android
+```
