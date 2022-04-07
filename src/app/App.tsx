@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FlatList, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import { Input, LoadingScreen } from '@src/components';
 import { styles } from './App.styles';
@@ -12,6 +12,11 @@ function App() {
 
   const { countries, loading } = useCountries();
   const { rates, refresh: refreshRates, loading: loadingRates } = useRates();
+
+  const filteredCountries = useMemo(
+    () => countries.filter(({ name }) => name.includes(filter)),
+    [countries, filter],
+  );
 
   function calculateAmount(currency?: Currency): number | undefined {
     if (rates && currency?.code && rates[currency.code]) {
@@ -37,7 +42,7 @@ function App() {
         />
       </KeyboardAvoidingView>
       <FlatList
-        data={countries.filter(country => country.name.includes(filter))}
+        data={filteredCountries}
         renderItem={({ item }) => (
           <CardCountry country={item} amount={calculateAmount(item.currency)} />
         )}
