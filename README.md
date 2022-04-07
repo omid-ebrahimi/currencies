@@ -11,6 +11,9 @@ Then it can get an amount in SEK and calculates the equivalent currency for each
 ```bash
 yarn install
 ```
+#### Set config values
+Rename `.env.example` to `.env` and set value for variables in the file.
+
 #### Run the app
 ```bash
 yarn run ios
