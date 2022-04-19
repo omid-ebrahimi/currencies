@@ -14,7 +14,11 @@ function App() {
   const { rates, refresh: refreshRates, loading: loadingRates } = useRates();
 
   const filteredCountries = useMemo(
-    () => countries.filter(({ name }) => name.includes(filter)),
+    () =>
+      countries.filter(
+        ({ name, capital }) =>
+          name.includes(filter) || capital.includes(filter),
+      ),
     [countries, filter],
   );
 
