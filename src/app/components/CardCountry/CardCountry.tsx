@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { typography } from '@src/theme';
 import { Country } from '@src/app/App.types';
-import { formatWithCommas, numberWithCommas } from '@src/utils/number';
+import { formatWithCommas, numberWithCommas } from '@src/utils';
 import { styles } from './CardCountry.styles';
 
 interface Props {

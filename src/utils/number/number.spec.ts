@@ -1,4 +1,4 @@
-import { formatWithCommas, numberWithCommas } from '@src/utils/number';
+import { formatWithCommas, numberWithCommas } from './number';
 
 describe('numberWithCommas()', () => {
   it('format integers correctly', () => {
