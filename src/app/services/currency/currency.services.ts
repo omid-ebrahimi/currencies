@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 import { Rates } from '@src/app/App.types';
-import { RatesDto } from './services.types';
+import { RatesDto } from './currency.types';
 
 export async function fetchRates(): Promise<Rates> {
   const response = await fetch(

@@ -1,4 +1,4 @@
-import { Currency, Rates } from '@src/app/App.types';
+import { Currency } from '@src/app/App.types';
 
 export interface CountryDto {
   name: { common: string };
@@ -6,8 +6,4 @@ export interface CountryDto {
   capital: string[];
   population: number;
   flag: string;
-}
-
-export interface RatesDto {
-  rates: Rates;
 }

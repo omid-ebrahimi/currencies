@@ -1,6 +1,6 @@
 import { formatWithCommas, numberWithCommas } from './number';
 
-describe('numberWithCommas()', () => {
+describe('numberWithCommas', () => {
   it('format integers correctly', () => {
     const value = 12569845;
     const result = numberWithCommas(value);
@@ -14,8 +14,8 @@ describe('numberWithCommas()', () => {
   });
 });
 
-describe('formatWithCommas()', () => {
-  it("don't touch none number values", () => {
+describe('formatWithCommas', () => {
+  it("doesn't touch none number values", () => {
     const value = 'Unknown';
     const result = formatWithCommas(value);
     expect(result).toBe('Unknown');
